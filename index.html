@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="jquery.min.js"></script>
+    <link rel="manifest" href="manifest.json">
+    <title>Web push notifications</title>
+</head>
+<body>
+<form class=" col-md-8 col-md-offset-3 div-padding">
+    <p class="col-md-7 col-md-offset-1" ><input name="requesting" type="radio" value="another" title="" checked> I'm requesting another assignment.</p>
+    <p class="col-md-7 col-md-offset-1" ><input name="requesting" type="radio" value="upload" title=""> I'm requesting upload or incomplete file.</p>
+    <p class="col-md-7 col-md-offset-1" ><input name="requesting" type="radio" value="different" title=""> I have a different request (explain below).</p>
+    <div class="col-md-12">&nbsp;</div>
+    <p class="col-md-8">
+        Optionally, add more details below. (ex. how many pages you believe you can complete before the end of the day,
+        the name of the file that's missing, etc.)
+    </p>
+    <div class="col-md-8">
+        <textarea class="form-control " name="description" title=""></textarea>
+    </div>
+    <div class="col-md-12">&nbsp;</div>
+
+    <input class="js-push-address" type="hidden" value="from DB">
+
+    <div class="col-md-4 col-md-offset-2">
+        <button type="submit" class="btn-primary btn-block" style="border-radius: 5px"><i class=""></i>Request another </button>
+    </div>
+</form>
+<p>
+    <button class="js-subscribe-button" disabled>
+        Enable Push Messages
+    </button>
+    <button type="button"  onclick="sendPushMess();" class="js-push-button" disabled>
+        Send Push Message
+    </button>
+</p>
+
+<script src="main.js"></script>
+</body>
+</html>

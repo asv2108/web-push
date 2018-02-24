@@ -1,0 +1,7 @@
+{
+  "name": " eDecreeNotifications",
+  "short_name": " eDecreeNotifications",
+  "start_url": "./index.html?homescreen=1",
+  "display": "standalone",
+  "gcm_sender_id": "937785400743"
+}

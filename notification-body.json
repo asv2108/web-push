@@ -1,0 +1,8 @@
+{
+  "notification":{
+    "url":"./second.phtml",
+    "title":"From worker",
+    "body":"I need more work"
+  },
+  "_id":1
+}
