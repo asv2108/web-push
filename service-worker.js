@@ -2,7 +2,7 @@
 
 self.addEventListener('push', function(event) {
     console.log('Received a push message', event);
-    // console.log(event.data);
+    console.log(event.data);
     
     event.waitUntil(
         fetch('./notification-body.json').then(function (response) {
