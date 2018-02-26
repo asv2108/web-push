@@ -1,4 +1,6 @@
 Web push notification
+Учетные данные для проекта
+
 
 <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
 <script>
@@ -21,7 +23,37 @@ AIzaSyC5YuWXNEuXMtRWsj09VV0TwAyOZJtv8Fk
 Идентификатор отправителя help_outline
 709625869743
 
-
+Веб-конфигурация
 Пара ключей для web приложения
 приватный - YM4BjG3wuACJ6yVW6dzSIB6ck5on5TO35JFDbORU3_g
 app - BC38NtDGBrwHcy3rELmRwA4whdxaRXGaKHzAxOAfWwbhobsgBLzbVXgfkztXfFi2zX-c14IOwPsUaKiQjfdE49I
+
+запуск локально без https
+sudo su 
+npm install -g firebase-tools
+firebase login --interactive
+firebase init
+firebase serve
+если выпадет ошибка пустой farebase.json
+{
+  "hosting": {
+    "public": "./",
+    "ignore": [
+      "firebase.json",
+      "database-rules.json",
+      "storage.rules",
+      "functions"
+    ],
+    "headers": [{
+      "source" : "**/*.@(js|html)",
+      "headers" : [ {
+        "key" : "Cache-Control",
+        "value" : "max-age=0"
+      } ]
+    }]
+  }
+}
+firebase serve
+
+
+

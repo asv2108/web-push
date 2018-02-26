@@ -9,11 +9,11 @@ var config = {
 firebase.initializeApp(config);
 
 const messaging = firebase.messaging();
-//messaging.usePublicVapidKey("YM4BjG3wuACJ6yVW6dzSIB6ck5on5TO35JFDbORU3_g");
+//messaging.usePublicVapidKey("BC38NtDGBrwHcy3rELmRwA4whdxaRXGaKHzAxOAfWwbhobsgBLzbVXgfkztXfFi2zX-c14IOwPsUaKiQjfdE49I");
 
 messaging.requestPermission().then(function () {
     console.log('Have permission');
     return messaging.getToken();
-}).then(function (token) { console.log(token) }).catch(function (err) {
+}).catch(function (err) {
     console.log(err);
 });

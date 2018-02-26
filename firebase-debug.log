@@ -1,0 +1,80 @@
+[debug] [2018-02-26T14:32:38.814Z] ----------------------------------------------------------------------
+[debug] [2018-02-26T14:32:38.817Z] Command:       /usr/bin/nodejs /usr/bin/firebase serve
+[debug] [2018-02-26T14:32:38.817Z] CLI Version:   3.17.4
+[debug] [2018-02-26T14:32:38.817Z] Platform:      linux
+[debug] [2018-02-26T14:32:38.817Z] Node Version:  v6.9.2
+[debug] [2018-02-26T14:32:38.817Z] Time:          Mon Feb 26 2018 16:32:38 GMT+0200 (EET)
+[debug] [2018-02-26T14:32:38.817Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-02-26T14:32:38.827Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-02-26T14:32:38.827Z] > authorizing via signed-in user
+[debug] [2018-02-26T14:32:38.829Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-02-26T14:32:38.829Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ { refresh_token: '1/QgLW0yJw8Au1vVf_U4Erx3v2g91DuJxb7ba5NBOebPaoPs_H_cJCZ-vdZ9CGPPyu',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Mon Feb 26 2018 16:32:38 GMT+0200 (EET)
+[debug] [2018-02-26T14:32:39.191Z] <<< HTTP RESPONSE 200
+[debug] [2018-02-26T14:32:39.232Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/vasilyev-e6d1e  
+  
+ Mon Feb 26 2018 16:32:39 GMT+0200 (EET)
+[debug] [2018-02-26T14:32:41.783Z] <<< HTTP RESPONSE 200
+[debug] [2018-02-26T14:32:41.784Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/vasilyev-e6d1e/tokens  
+  
+ Mon Feb 26 2018 16:32:41 GMT+0200 (EET)
+[debug] [2018-02-26T14:32:42.502Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/home/mycredit/www/webpush'...
+[info] 
+[debug] [2018-02-26T14:32:42.505Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/vasilyev-e6d1e  
+  
+ Mon Feb 26 2018 16:32:42 GMT+0200 (EET)
+[debug] [2018-02-26T14:32:43.436Z] <<< HTTP RESPONSE 200
+[debug] [2018-02-26T14:32:43.437Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/709625869743/clients/_:getWebAppConfig  
+  
+ Mon Feb 26 2018 16:32:43 GMT+0200 (EET)
+[debug] [2018-02-26T14:32:44.036Z] <<< HTTP RESPONSE 200
+[debug] [2018-02-26T14:32:44.057Z] TypeError: Cannot read property 'public' of undefined
+    at Server.<anonymous> (/usr/lib/node_modules/firebase-tools/lib/serve/hosting.js:34:17)
+    at Server.g (events.js:291:16)
+    at emitNone (events.js:86:13)
+    at Server.emit (events.js:185:7)
+    at emitListeningNT (net.js:1285:10)
+    at _combinedTickCallback (internal/process/next_tick.js:71:11)
+    at process._tickDomainCallback (internal/process/next_tick.js:122:9)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2018-02-26T14:41:46.290Z] ----------------------------------------------------------------------
+[debug] [2018-02-26T14:41:46.293Z] Command:       /usr/bin/nodejs /usr/bin/firebase serve
+[debug] [2018-02-26T14:41:46.293Z] CLI Version:   3.17.4
+[debug] [2018-02-26T14:41:46.293Z] Platform:      linux
+[debug] [2018-02-26T14:41:46.293Z] Node Version:  v6.9.2
+[debug] [2018-02-26T14:41:46.293Z] Time:          Mon Feb 26 2018 16:41:46 GMT+0200 (EET)
+[debug] [2018-02-26T14:41:46.293Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-02-26T14:41:46.303Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-02-26T14:41:46.304Z] > authorizing via signed-in user
+[debug] [2018-02-26T14:41:46.306Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/vasilyev-e6d1e  
+  
+ Mon Feb 26 2018 16:41:46 GMT+0200 (EET)
+[debug] [2018-02-26T14:41:47.121Z] <<< HTTP RESPONSE 200
+[debug] [2018-02-26T14:41:47.122Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/vasilyev-e6d1e/tokens  
+  
+ Mon Feb 26 2018 16:41:47 GMT+0200 (EET)
+[debug] [2018-02-26T14:41:47.943Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/home/mycredit/www/webpush'...
+[info] 
+[debug] [2018-02-26T14:41:47.946Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/vasilyev-e6d1e  
+  
+ Mon Feb 26 2018 16:41:47 GMT+0200 (EET)
+[debug] [2018-02-26T14:41:48.853Z] <<< HTTP RESPONSE 200
+[debug] [2018-02-26T14:41:48.853Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/709625869743/clients/_:getWebAppConfig  
+  
+ Mon Feb 26 2018 16:41:48 GMT+0200 (EET)
+[debug] [2018-02-26T14:41:49.545Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: ./
+[info] ✔  hosting: Local server: http://localhost:5000
+
