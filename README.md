@@ -1,7 +1,5 @@
 Web push notification
 Учетные данные для проекта
-
-
 <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
 <script>
     // Initialize Firebase
@@ -54,6 +52,9 @@ firebase serve
   }
 }
 firebase serve
+
+пришлось изменить manifest.json 
+"gcm_sender_id": "103953800507" c моего 709625869743 !!!!!!!!!!11 для локальной разработки через firebase serve
 
 
 
