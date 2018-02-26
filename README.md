@@ -56,5 +56,6 @@ firebase serve
 пришлось изменить manifest.json 
 "gcm_sender_id": "103953800507" c моего 709625869743 !!!!!!!!!!11 для локальной разработки через firebase serve
 
-
+PublicVapidKey  Веб-конфигурация Сертификаты для Web Push 
+BC38NtDGBrwHcy3rELmRwA4whdxaRXGaKHzAxOAfWwbhobsgBLzbVXgfkztXfFi2zX-c14IOwPsUaKiQjfdE49I
 

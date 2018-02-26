@@ -3,12 +3,12 @@
 <head>
     <meta charset="utf-8">
     <link rel="manifest" href="manifest.json">
-    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <!--<script src="/firebase/firebase.js"></script>-->
+    <script src="/firebase/firebase.js"></script>
     <script src="/firebase/firebase-app.js"></script>
-    <script src="/firebase/firebase-messaging.js"></script>
-    <script src="firebase-messaging-sw.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <!--<script src="/firebase/firebase-messaging.js"></script>-->
     <title>Firebase Cloud Messaging</title>
+
 </head>
 <body>
 <main class="" id="">
@@ -18,4 +18,24 @@
 </main>
 </body>
 </html>
+<script>
+    //перенес from messaging-sw
+    var config = {
+        apiKey: "AIzaSyBaaV8jUe_6oHafyAHLGiN2uO-Tfi7bFcg",
+        authDomain: "vasilyev-e6d1e.firebaseapp.com",
+        databaseURL: "https://vasilyev-e6d1e.firebaseio.com",
+        projectId: "vasilyev-e6d1e",
+        storageBucket: "",
+        messagingSenderId: "709625869743"
+    };
+    firebase.initializeApp(config);
+    const messaging = firebase.messaging();
+    messaging.usePublicVapidKey("BC38NtDGBrwHcy3rELmRwA4whdxaRXGaKHzAxOAfWwbhobsgBLzbVXgfkztXfFi2zX-c14IOwPsUaKiQjfdE49I");
 
+    messaging.requestPermission().then(function () {
+        console.log('Have permission');
+        return messaging.getToken();
+    }).catch(function (err) {
+        console.log(err);
+    });
+</script>
