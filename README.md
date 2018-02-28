@@ -53,9 +53,35 @@ firebase serve
 }
 firebase serve
 
+Файл Service Worker-а должен называться именно firebase-messaging-sw.js и обязательно должен находиться
+в корне проекта, то есть доступен по адресу https://example.com/firebase-messaging-sw.js. 
+Путь к этому файлу жестко прописан в библиотеке Firebase.
+
 пришлось изменить manifest.json 
 "gcm_sender_id": "103953800507" c моего 709625869743 !!!!!!!!!!11 для локальной разработки через firebase serve
 
 PublicVapidKey  Веб-конфигурация Сертификаты для Web Push 
 BC38NtDGBrwHcy3rELmRwA4whdxaRXGaKHzAxOAfWwbhobsgBLzbVXgfkztXfFi2zX-c14IOwPsUaKiQjfdE49I
 
+
+If you opt for a VAPID public key, use this specific FCM public key:
+BDOU99-h67HcA6JeFXHbSNMu7e2yNNu3RzoMj8TM4W88jITfq7ZmPvIM1Iv-4_l2LxQcYwhqby2xGpWwzjfAnG4
+ 
+ 
+
+//старый вариант
+curl -X POST --header "Authorization: key=AAAApTj_da8:APA91bG-q75ChxZEArYelPzUJ0jzjZ2e6Q0pD3wT8lrsG4i7cvliU6HB-bJDvcg8mTjMGELYOmpxYbI-yOcZEKEAwEVHqHvm2H00g09dLSnHqL6mtOvs1ZDETbmYTkAr-I4oQ9_01GaA" \
+    --Header "Content-Type: application/json" \
+    https://fcm.googleapis.com/fcm/send \
+    -d "{\"to\":\"fjGBLlAPFws:APA91bFy_jIoRXyx5Yq8Xn98d9r6QqZAG8MPkEtOW8UpBuhb39cdcKjXmY5jilE0t_dyZyYavk-7FdR9bWMIGzaXBBo03Rs6LLu02ZUEimCFLtEFlMvmH7p8ZlKGSOUQsJzjPrHvTMKH\",\"notification\":{\"title\": \"Hello\",\"body\":\"Second message\"},\"priority\":10}"
+
+// новый вариант  
+curl -X POST -H "Authorization: key=AAAApTj_da8:APA91bG-q75ChxZEArYelPzUJ0jzjZ2e6Q0pD3wT8lrsG4i7cvliU6HB-bJDvcg8mTjMGELYOmpxYbI-yOcZEKEAwEVHqHvm2H00g09dLSnHqL6mtOvs1ZDETbmYTkAr-I4oQ9_01GaA" -H "Content-Type: application/json" -d '{
+  "notification": {
+    "title": "Portugal vs. Denmark",
+    "body": "5 to 1",
+    "icon": "firebase-logo.png",
+    "click_action": "http://localhost:5000/"
+  },
+  "to": "do8W2d4kyCo:APA91bGWLpBZBWdk10HpB4RAqiFP1fa3m_2v6RLe1OcKs2e3Am2DxxsbW5_l4ms_9uX-NOfKdVrU-wdZhsDKrWquB0wvQ8oTLi6KUMHk-aZ1TxObpzBa4Ga24aUTxzTAqv5hs1I8-yPt"
+}' "https://fcm.googleapis.com/fcm/send"

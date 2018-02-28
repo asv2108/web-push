@@ -78,3 +78,117 @@
 [info] i  hosting: Serving hosting files from: ./
 [info] ✔  hosting: Local server: http://localhost:5000
 
+[debug] [2018-02-27T07:55:51.045Z] ----------------------------------------------------------------------
+[debug] [2018-02-27T07:55:51.048Z] Command:       /usr/bin/nodejs /usr/bin/firebase serve
+[debug] [2018-02-27T07:55:51.048Z] CLI Version:   3.17.4
+[debug] [2018-02-27T07:55:51.048Z] Platform:      linux
+[debug] [2018-02-27T07:55:51.048Z] Node Version:  v6.9.2
+[debug] [2018-02-27T07:55:51.049Z] Time:          Tue Feb 27 2018 09:55:51 GMT+0200 (EET)
+[debug] [2018-02-27T07:55:51.049Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-02-27T07:55:51.111Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-02-27T07:55:51.111Z] > authorizing via signed-in user
+[debug] [2018-02-27T07:55:51.113Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-02-27T07:55:51.114Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ { refresh_token: '1/QgLW0yJw8Au1vVf_U4Erx3v2g91DuJxb7ba5NBOebPaoPs_H_cJCZ-vdZ9CGPPyu',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Tue Feb 27 2018 09:55:51 GMT+0200 (EET)
+[debug] [2018-02-27T07:55:51.474Z] <<< HTTP RESPONSE 200
+[debug] [2018-02-27T07:55:51.525Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/vasilyev-e6d1e  
+  
+ Tue Feb 27 2018 09:55:51 GMT+0200 (EET)
+[debug] [2018-02-27T07:55:52.344Z] <<< HTTP RESPONSE 200
+[debug] [2018-02-27T07:55:52.345Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/vasilyev-e6d1e/tokens  
+  
+ Tue Feb 27 2018 09:55:52 GMT+0200 (EET)
+[debug] [2018-02-27T07:55:53.094Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/home/mycredit/www/webpush'...
+[info] 
+[debug] [2018-02-27T07:55:53.097Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/vasilyev-e6d1e  
+  
+ Tue Feb 27 2018 09:55:53 GMT+0200 (EET)
+[debug] [2018-02-27T07:55:54.007Z] <<< HTTP RESPONSE 200
+[debug] [2018-02-27T07:55:54.008Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/709625869743/clients/_:getWebAppConfig  
+  
+ Tue Feb 27 2018 09:55:54 GMT+0200 (EET)
+[debug] [2018-02-27T07:55:54.596Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: ./
+[info] ✔  hosting: Local server: http://localhost:5000
+
+[debug] [2018-02-28T07:16:51.577Z] ----------------------------------------------------------------------
+[debug] [2018-02-28T07:16:51.579Z] Command:       /usr/bin/nodejs /usr/bin/firebase serve
+[debug] [2018-02-28T07:16:51.580Z] CLI Version:   3.17.4
+[debug] [2018-02-28T07:16:51.580Z] Platform:      linux
+[debug] [2018-02-28T07:16:51.580Z] Node Version:  v6.9.2
+[debug] [2018-02-28T07:16:51.580Z] Time:          Wed Feb 28 2018 09:16:51 GMT+0200 (EET)
+[debug] [2018-02-28T07:16:51.580Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-02-28T07:16:51.651Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-02-28T07:16:51.651Z] > authorizing via signed-in user
+[debug] [2018-02-28T07:16:51.663Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-02-28T07:16:51.663Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ { refresh_token: '1/QgLW0yJw8Au1vVf_U4Erx3v2g91DuJxb7ba5NBOebPaoPs_H_cJCZ-vdZ9CGPPyu',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Wed Feb 28 2018 09:16:51 GMT+0200 (EET)
+[debug] [2018-02-28T07:16:51.980Z] <<< HTTP RESPONSE 200
+[debug] [2018-02-28T07:16:52.110Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/vasilyev-e6d1e  
+  
+ Wed Feb 28 2018 09:16:52 GMT+0200 (EET)
+[debug] [2018-02-28T07:16:53.222Z] <<< HTTP RESPONSE 200
+[debug] [2018-02-28T07:16:53.223Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/vasilyev-e6d1e/tokens  
+  
+ Wed Feb 28 2018 09:16:53 GMT+0200 (EET)
+[debug] [2018-02-28T07:16:53.953Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/home/mycredit/www/webpush'...
+[info] 
+[debug] [2018-02-28T07:16:53.956Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/vasilyev-e6d1e  
+  
+ Wed Feb 28 2018 09:16:53 GMT+0200 (EET)
+[debug] [2018-02-28T07:16:54.865Z] <<< HTTP RESPONSE 200
+[debug] [2018-02-28T07:16:54.865Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/709625869743/clients/_:getWebAppConfig  
+  
+ Wed Feb 28 2018 09:16:54 GMT+0200 (EET)
+[debug] [2018-02-28T07:16:55.678Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: ./
+[info] ✔  hosting: Local server: http://localhost:5000
+
+[debug] [2018-02-28T07:40:04.401Z] ----------------------------------------------------------------------
+[debug] [2018-02-28T07:40:04.404Z] Command:       /usr/bin/nodejs /usr/bin/firebase serve
+[debug] [2018-02-28T07:40:04.404Z] CLI Version:   3.17.4
+[debug] [2018-02-28T07:40:04.404Z] Platform:      linux
+[debug] [2018-02-28T07:40:04.404Z] Node Version:  v6.9.2
+[debug] [2018-02-28T07:40:04.404Z] Time:          Wed Feb 28 2018 09:40:04 GMT+0200 (EET)
+[debug] [2018-02-28T07:40:04.404Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-02-28T07:40:04.414Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-02-28T07:40:04.414Z] > authorizing via signed-in user
+[debug] [2018-02-28T07:40:04.416Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/vasilyev-e6d1e  
+  
+ Wed Feb 28 2018 09:40:04 GMT+0200 (EET)
+[debug] [2018-02-28T07:40:05.221Z] <<< HTTP RESPONSE 200
+[debug] [2018-02-28T07:40:05.222Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/vasilyev-e6d1e/tokens  
+  
+ Wed Feb 28 2018 09:40:05 GMT+0200 (EET)
+[debug] [2018-02-28T07:40:05.912Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/home/mycredit/www/webpush'...
+[info] 
+[debug] [2018-02-28T07:40:05.915Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/vasilyev-e6d1e  
+  
+ Wed Feb 28 2018 09:40:05 GMT+0200 (EET)
+[debug] [2018-02-28T07:40:06.317Z] <<< HTTP RESPONSE 200
+[debug] [2018-02-28T07:40:06.317Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/709625869743/clients/_:getWebAppConfig  
+  
+ Wed Feb 28 2018 09:40:06 GMT+0200 (EET)
+[debug] [2018-02-28T07:40:06.876Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: ./
+[info] ✔  hosting: Local server: http://localhost:5000
+
