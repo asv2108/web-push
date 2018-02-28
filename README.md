@@ -63,18 +63,9 @@ firebase serve
 PublicVapidKey  Веб-конфигурация Сертификаты для Web Push 
 BC38NtDGBrwHcy3rELmRwA4whdxaRXGaKHzAxOAfWwbhobsgBLzbVXgfkztXfFi2zX-c14IOwPsUaKiQjfdE49I
 
-
 If you opt for a VAPID public key, use this specific FCM public key:
 BDOU99-h67HcA6JeFXHbSNMu7e2yNNu3RzoMj8TM4W88jITfq7ZmPvIM1Iv-4_l2LxQcYwhqby2xGpWwzjfAnG4
  
- 
-
-//старый вариант
-curl -X POST --header "Authorization: key=AAAApTj_da8:APA91bG-q75ChxZEArYelPzUJ0jzjZ2e6Q0pD3wT8lrsG4i7cvliU6HB-bJDvcg8mTjMGELYOmpxYbI-yOcZEKEAwEVHqHvm2H00g09dLSnHqL6mtOvs1ZDETbmYTkAr-I4oQ9_01GaA" \
-    --Header "Content-Type: application/json" \
-    https://fcm.googleapis.com/fcm/send \
-    -d "{\"to\":\"fjGBLlAPFws:APA91bFy_jIoRXyx5Yq8Xn98d9r6QqZAG8MPkEtOW8UpBuhb39cdcKjXmY5jilE0t_dyZyYavk-7FdR9bWMIGzaXBBo03Rs6LLu02ZUEimCFLtEFlMvmH7p8ZlKGSOUQsJzjPrHvTMKH\",\"notification\":{\"title\": \"Hello\",\"body\":\"Second message\"},\"priority\":10}"
-
 // новый вариант  
 curl -X POST -H "Authorization: key=AAAApTj_da8:APA91bG-q75ChxZEArYelPzUJ0jzjZ2e6Q0pD3wT8lrsG4i7cvliU6HB-bJDvcg8mTjMGELYOmpxYbI-yOcZEKEAwEVHqHvm2H00g09dLSnHqL6mtOvs1ZDETbmYTkAr-I4oQ9_01GaA" -H "Content-Type: application/json" -d '{
   "notification": {
@@ -86,3 +77,60 @@ curl -X POST -H "Authorization: key=AAAApTj_da8:APA91bG-q75ChxZEArYelPzUJ0jzjZ2e
   "time_to_live": 90000,
   "to": "cBr8y3luHA4:APA91bEgEWBvZm9-5raKYYGoRv8PM34B5TIksqhEuc4UjQ9UStOSjjMHFqlEfnVsy_Qk54D5KR77oXgFKTd6dkrRyqC775WUvdoFfdYy4akMuiYeiHpmg-34GfPH_zPMTQqpoCeLYp6n"
 }' "https://fcm.googleapis.com/fcm/send"
+
+
+https http://help.ubuntu.ru/wiki/apache2#настройка_https_в_apache
+https://www.digitalocean.com/community/tutorials/how-to-create-a-ssl-certificate-on-apache-for-ubuntu-14-04
+
+default-ssl.conf
+<IfModule mod_ssl.c>
+	<VirtualHost _default_:443>
+		ServerAdmin webmaster@localhost
+        #DocumentRoot /var/www/html
+		DocumentRoot /home/mycredit/www
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+        SSLEngine on
+        SSLCertificateFile /etc/apache2/ssl/apache.crt
+        SSLCertificateKeyFile /etc/apache2/ssl/apache.key
+        <FilesMatch "\.(cgi|shtml|phtml|php)$">
+                        SSLOptions +StdEnvVars
+        </FilesMatch>
+        <Directory /usr/lib/cgi-bin>
+                        SSLOptions +StdEnvVars
+        </Directory>
+        BrowserMatch "MSIE [2-6]" \
+                        nokeepalive ssl-unclean-shutdown \
+                        downgrade-1.0 force-response-1.0
+        BrowserMatch "MSIE [17-9]" ssl-unclean-shutdown
+	</VirtualHost>
+</IfModule>
+
+my new sites availble
+<VirtualHost *:443>
+    ServerName webpush-ssl
+    DocumentRoot /home/mycredit/www/webpush
+	<Directory />
+		Options FollowSymLinks
+		AllowOverride None
+	</Directory>
+	<Directory /home/mycredit/www/webpush>
+		Options Indexes FollowSymlinks
+		AllowOverride All
+		Require all granted
+	</Directory>
+    SSLEngine on
+    #SSLCertificateFile /etc/apache2/ssl/apache.crt
+    #SSLCertificateKeyFile /etc/apache2/ssl/apache.key
+    SSLCertificateFile    /etc/ssl/certs/server.pem
+    SSLCertificateKeyFile /etc/ssl/private/server.key
+</VirtualHost>
+
+127.0.0.1	webpush-ssl
+
+"Failed to register a ServiceWorker: An SSL certificate error occurred when fetching the script."
+
+chrome://flags/#allow-insecure-localhost  вкл
+
+
+//удалить .firebaserc firebase-debug.log

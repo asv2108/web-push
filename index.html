@@ -66,18 +66,18 @@
     // Если ваше приложение было ранее установлено и сгенерировано токен,
     // то onTokenRefresh не будет вызываться. Попробуйте удалить и переустановить приложение,
     // чтобы заставить генерировать новый токен, это вызовет вызов onTokenRefresh.
-    messaging.onTokenRefresh(function () {
-        messaging.getToken()
-            .then(function (refreshedToken) {
-                console.log('Token refreshed.');
-                showToken('refresh AAAAAAAAAAAAAAA    '+ refreshedToken);
-                alert('refresh');
-            })
-            .catch(function (err) {
-                console.log('Unable to retrieve refreshed token ', err);
-                alert('Проблема с ключем регистрации усьройства');
-            });
-    });
+    // messaging.onTokenRefresh(function () {
+    //     messaging.getToken()
+    //         .then(function (refreshedToken) {
+    //             console.log('Token refreshed.');
+    //             showToken('refresh AAAAAAAAAAAAAAA    '+ refreshedToken);
+    //             alert('refresh');
+    //         })
+    //         .catch(function (err) {
+    //             console.log('Unable to retrieve refreshed token ', err);
+    //             alert('Проблема с ключем регистрации усьройства');
+    //         });
+    // });
 
     messaging.requestPermission().then(function () {
         messaging.getToken()
