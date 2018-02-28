@@ -81,7 +81,8 @@ curl -X POST -H "Authorization: key=AAAApTj_da8:APA91bG-q75ChxZEArYelPzUJ0jzjZ2e
     "title": "Portugal vs. Denmark",
     "body": "5 to 1",
     "icon": "firebase-logo.png",
-    "click_action": "http://localhost:5000/"
+    "click_action": ""
   },
-  "to": "do8W2d4kyCo:APA91bGWLpBZBWdk10HpB4RAqiFP1fa3m_2v6RLe1OcKs2e3Am2DxxsbW5_l4ms_9uX-NOfKdVrU-wdZhsDKrWquB0wvQ8oTLi6KUMHk-aZ1TxObpzBa4Ga24aUTxzTAqv5hs1I8-yPt"
+  "time_to_live": 90000,
+  "to": "cBr8y3luHA4:APA91bEgEWBvZm9-5raKYYGoRv8PM34B5TIksqhEuc4UjQ9UStOSjjMHFqlEfnVsy_Qk54D5KR77oXgFKTd6dkrRyqC775WUvdoFfdYy4akMuiYeiHpmg-34GfPH_zPMTQqpoCeLYp6n"
 }' "https://fcm.googleapis.com/fcm/send"

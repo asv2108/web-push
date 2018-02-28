@@ -1,5 +1,6 @@
 {
   "name": " testWebPush",
   "short_name": " twp",
-  "gcm_sender_id": "103953800507"
+  "gcm_sender_id": "103953800507",
+  "background_color": "#fff"
 }
