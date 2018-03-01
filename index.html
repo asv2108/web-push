@@ -14,10 +14,10 @@
     <div id="token_div">
         <h4>Instance ID Token</h4>
         <p id="token"></p>
-        <button id="subscribe" class="" onclick="subscribe()" disabled>
+        <button id="subscribe" class="" onclick="subscribe()">
             Подписаться
         </button>
-        <button  id="unSubscribe" class="" onclick="unSubscribe()" disabled>
+        <button  id="unSubscribe" class="" onclick="unSubscribe()">
             Отписаться
         </button>
     </div>
@@ -27,11 +27,11 @@
         <form action="/API/send.php" method="post">
             <div class="form-input">
                 <label>Title</label>
-                <input type="text"name="title'">
+                <input type="text" name="title">
             </div>
             <div class="form-input">
                 <label>Body</label>
-                <input type="text"name="body">
+                <input type="text" name="body">
             </div>
             <div class="form-input button">
                 <input type= "submit" value= "Отправить">

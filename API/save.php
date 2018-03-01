@@ -1,9 +1,10 @@
 <?php
 
-$data = file_get_contents('php://input');
-$conn = new mysqli("localhost", "root", "", "webpush");
+//$data = file_get_contents('php://input');
+$token = $_POST['token'];
 
-$sql = "UPDATE users_push_id SET key_push='{$id}' WHERE id=1";
+$conn = new mysqli("localhost", "root", "", "webpush");
+$sql = "UPDATE user_push_id SET key_push='{$token}' WHERE id=1";
 
 if ($conn->query($sql) === TRUE) {
     echo 'users entry saved successfully';

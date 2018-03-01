@@ -1,10 +1,12 @@
+// кнопки подиски/отписки
 var subscribeButton = document.querySelector('#subscribe');
 var unSubscribeButton = document.querySelector('#unSubscribe');
 
+// проверяем возможность разрешения подписки
 messaging.requestPermission().then(function () {
     console.log('Есть возможность подписаться');
     subscribeButton.disabled = false;
-
+    unSubscribeButton.disabled = true;
 }).catch(function (err) {
     alert('You need put on web notification in your browser!');
     console.log(err);
@@ -12,9 +14,25 @@ messaging.requestPermission().then(function () {
     // location.reload();
 });
 
+// получаем флаг подписки/не подписки
+var statusSubscribe = localStorage.getItem('subscribe');
+
+// TODO проверить чтобы времени отсрочки хватало
+// если пользователь не подписан делаем кнопку подписки активной иначе - не активной, тоже с кнопкой отписки
+setTimeout(function(){
+    if(statusSubscribe === 'on'){
+        subscribeButton.disabled = true;
+        unSubscribeButton.disabled = false;
+    }else{
+        subscribeButton.disabled = false;
+        unSubscribeButton.disabled = true;
+    }
+},500);
+
 
 //если убить сервис воркер вручную из браузера то он появляется при подписке
 
+// подписаться на уведомления и получить токен
 function subscribe() {
     messaging.getToken()
         .then(function (currentToken) {
@@ -24,6 +42,7 @@ function subscribe() {
                 showToken(currentToken);
                 subscribeButton.disabled = true;
                 unSubscribeButton.disabled = false;
+                localStorage.setItem('subscribe', 'on');
                 // сохранение токена в бд
                 sendTokenToServer(currentToken,'set');
             } else {
@@ -43,12 +62,13 @@ function unSubscribe() {
         .then(function (currentToken) {
             messaging.deleteToken(currentToken)
                 .then(function () {
+                    localStorage.setItem('subscribe', 'out');
                     subscribeButton.disabled = false ;
                     unSubscribeButton.disabled = true;
                     console.log('Token deleted.');
                     // убиваем ключ в бд
-                    sendTokenToServer(currentToken,'delete');
-                    location.reload();
+                    sendTokenToServer('-','delete');
+                    //location.reload();
                 })
                 .catch(function (err) {
                     console.log('Unable to delete token. ', err);
@@ -74,6 +94,19 @@ messaging.onMessage(function (payload) {
 
 function sendTokenToServer(currentToken,type) {
     // TODO(developer): Send the current token to your server.
+    var url;
+    if(type==='set'){
+        url = 'API/save.php';
+    }else{
+        url = 'API/delete.php';
+    }
+    $.ajax({
+        method:'POST',
+        url:url,
+        data:{token:currentToken}
+    }).done(function(res){
+        console.log(res);
+    });
 }
 
 //выводим кюч подписанного устройства
