@@ -19,12 +19,12 @@ if($token){
     define('API_ACCESS_KEY', 'AAAApTj_da8:APA91bG-q75ChxZEArYelPzUJ0jzjZ2e6Q0pD3wT8lrsG4i7cvliU6HB-bJDvcg8mTjMGELYOmpxYbI-yOcZEKEAwEVHqHvm2H00g09dLSnHqL6mtOvs1ZDETbmYTkAr-I4oQ9_01GaA');
     $fields = array (
         'notification' => array (
-            "title"=> "fffffffffff",
-            "body"=> "465467",
+            "title"=> $title,
+            "body"=> $body,
             "icon"=> "firebase-logo.png",
             "click_action"=> ""
         ),
-        'to'=>"dB_-2rtBtl0:APA91bHMRkxbyxHLMmPbVLV57svMvT9pHJCTNggzyxmFJpmlm4G29Kj_hxXwz_Ig8viS8a5uip0oDykh3Ffm_8qxuxevw8XEc_3EBYIsQGimsQKopSNcLaQwAPRiP7n-qiawFfmS0sDl"
+        'to'=>$token
     );
 
     $headers = array(
