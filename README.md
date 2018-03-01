@@ -75,7 +75,7 @@ curl -X POST -H "Authorization: key=AAAApTj_da8:APA91bG-q75ChxZEArYelPzUJ0jzjZ2e
     "click_action": ""
   },
   "time_to_live": 90000,
-  "to": "cBr8y3luHA4:APA91bEgEWBvZm9-5raKYYGoRv8PM34B5TIksqhEuc4UjQ9UStOSjjMHFqlEfnVsy_Qk54D5KR77oXgFKTd6dkrRyqC775WUvdoFfdYy4akMuiYeiHpmg-34GfPH_zPMTQqpoCeLYp6n"
+  "to": "dEk5Ip33pYI:APA91bHkn-zourwOsJA_uP4A6LzAAiHTdIXRiEaB25jiBq2PhWY6EzppyEZWvosEsRqER6FJ4vlyzbzZ6gRmCj0ZF9aShPkV503LPYL3CJokmysOcXm8gUbKuj3_7eYU645URniHjVrW"
 }' "https://fcm.googleapis.com/fcm/send"
 
 
@@ -131,6 +131,10 @@ my new sites availble
 "Failed to register a ServiceWorker: An SSL certificate error occurred when fetching the script."
 
 chrome://flags/#allow-insecure-localhost  вкл
+
+в хроме не удалось запустить
+
+пробую мозилу
 
 
 //удалить .firebaserc firebase-debug.log

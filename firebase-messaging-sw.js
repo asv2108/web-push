@@ -11,15 +11,16 @@ firebase.initializeApp(config);
 
 const messaging = firebase.messaging();
 
-// messaging.setBackgroundMessageHandler(function(payload) {
-//     console.log('[firebase-messaging-sw.js] Received background message ', payload);
-//     // Customize notification here
-//     const notificationTitle = 'Background Message Title';
-//     const notificationOptions = {
-//         body: 'Background Message body.',
-//         icon: '/firebase-logo.png'
-//     };
-//
-//     return self.registration.showNotification(notificationTitle,
-//         notificationOptions);
-// });
+//TODO пока не работает
+messaging.setBackgroundMessageHandler(function(payload) {
+    console.log('[firebase-messaging-sw.js] Received background message ', payload);
+    // Customize notification here
+    const notificationTitle = 'Из сервис воркера';
+    const notificationOptions = {
+        body: 'Background Message body.',
+        icon: 'Из сервис воркера'
+    };
+
+    return self.registration.showNotification(notificationTitle,
+        notificationOptions);
+});
