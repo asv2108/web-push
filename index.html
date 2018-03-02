@@ -5,9 +5,9 @@
     <link rel="manifest" href="manifest.json">
     <!--<script src="firebase/firebase.js"></script>  в мозиле выдает ошибку  Source map error: request failed with status 404 -->
     <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
-    <script src="jquery-2.2.1.min.js"></script>
+    <script src="firebase/jquery-2.2.1.min.js"></script>
     <title>Firebase Cloud Messaging</title>
-    <link href="main.css" rel="stylesheet">
+    <link href="firebase/main.css" rel="stylesheet">
 </head>
 <body>
 <main class="main">
@@ -27,11 +27,15 @@
         <form action="/API/send.php" method="post">
             <div class="form-input">
                 <label>Title</label>
-                <input type="text" name="title">
+                <input type="text" name="title" value="My title" >
             </div>
             <div class="form-input">
                 <label>Body</label>
-                <input type="text" name="body">
+                <input type="text" name="body" value="My body" >
+            </div>
+            <div class="form-input">
+                <label>New option</label>
+                <input type="text" name="key" value="new value" >
             </div>
             <div class="form-input">
                 <label>To url</label>
@@ -45,20 +49,4 @@
 </main>
 </body>
 </html>
-<script>
-    var config = {
-        apiKey: "AIzaSyBaaV8jUe_6oHafyAHLGiN2uO-Tfi7bFcg",
-        authDomain: "vasilyev-e6d1e.firebaseapp.com",
-        databaseURL: "https://vasilyev-e6d1e.firebaseio.com",
-        projectId: "vasilyev-e6d1e",
-        storageBucket: "",
-        messagingSenderId: "709625869743"
-    };
-    firebase.initializeApp(config);
-
-    const messaging = firebase.messaging();
-
-    messaging.usePublicVapidKey("BC38NtDGBrwHcy3rELmRwA4whdxaRXGaKHzAxOAfWwbhobsgBLzbVXgfkztXfFi2zX-c14IOwPsUaKiQjfdE49I");
-
-</script>
-<script src="app.js"></script>
+<script src="firebase/app.js"></script>

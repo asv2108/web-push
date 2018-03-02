@@ -12,15 +12,13 @@ firebase.initializeApp(config);
 
 const messaging = firebase.messaging();
 
-//отрабатывает если слать не notification а data section
+//отрабатывает если слать не notification а data section  и при свернутой текущей вкладке
 messaging.setBackgroundMessageHandler(function(payload) {
-    console.log('[firebase-messaging-sw.js] Received background message ', payload);
-    // Customize notification here
-    const notificationTitle = 'Из сервис воркера';
-    const notificationOptions = {
+    const title = 'Из сервис воркера';
+    const options = {
         body: payload.data.message,
-        icon: 'firebase-logo.png'
+        icon: 'firebase/firebase-logo.png',
+        action : payload.data.action
     };
-    return self.registration.showNotification(notificationTitle,
-        notificationOptions);
+    return self.registration.showNotification('sw' + title,options);
 });

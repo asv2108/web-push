@@ -1,3 +1,18 @@
+var config = {
+    apiKey: "AIzaSyBaaV8jUe_6oHafyAHLGiN2uO-Tfi7bFcg",
+    authDomain: "vasilyev-e6d1e.firebaseapp.com",
+    databaseURL: "https://vasilyev-e6d1e.firebaseio.com",
+    projectId: "vasilyev-e6d1e",
+    storageBucket: "",
+    messagingSenderId: "709625869743"
+};
+firebase.initializeApp(config);
+
+const messaging = firebase.messaging();
+
+messaging.usePublicVapidKey("BC38NtDGBrwHcy3rELmRwA4whdxaRXGaKHzAxOAfWwbhobsgBLzbVXgfkztXfFi2zX-c14IOwPsUaKiQjfdE49I");
+
+
 // кнопки подиски/отписки
 var subscribeButton = document.querySelector('#subscribe');
 var unSubscribeButton = document.querySelector('#unSubscribe');
@@ -29,8 +44,6 @@ setTimeout(function(){
     }
 },500);
 
-
-//если убить сервис воркер вручную из браузера то он появляется при подписке
 
 // подписаться на уведомления и получить токен
 function subscribe() {
@@ -84,19 +97,12 @@ function unSubscribe() {
 // отображаем на сайте, если он открыт в текущей вкладке
 messaging.onMessage(function (payload) {
     console.log(payload)
-
-    // var options = {
-    //     body: payload.notification.body,
-    //     icon: payload.notification.icon
-    // };
-    //var n = new Notification(payload.notification.title,options);
-
-    // если слать вместо нотификации - дату
     var options = {
-        body: payload.data.message,
-        icon: 'firebase-logo.png'
+        body: payload.data.message + " " + payload.data.key,
+        icon: 'firebase/firebase-logo.png',
+        action : payload.data.action
     };
-    var n = new Notification('from app.js 94',options);
+    var n = new Notification('add.js '+payload.data.title,options);
     setTimeout(n.close.bind(n), 20000);
 });
 
@@ -123,33 +129,3 @@ function showToken(currentToken) {
     var tokenElement = document.querySelector('#token');
     tokenElement.textContent = currentToken;
 }
-
-
-// Add a message to the messages element.
-function appendMessage(payload) {
-    const messagesElement = document.querySelector('#messages');
-    const dataHeaderELement = document.createElement('h5');
-    const dataElement = document.createElement('pre');
-    dataElement.style = 'overflow-x:hidden;';
-    dataHeaderELement.textContent = 'Received message:';
-    dataElement.textContent = JSON.stringify(payload, null, 2);
-    messagesElement.appendChild(dataHeaderELement);
-    messagesElement.appendChild(dataElement);
-}
-
-// onTokenRefresh  вызывается только при создании нового токена.              не отрабатывает!!!!!!!!!!!!!!!!!!!!!!
-// Если ваше приложение было ранее установлено и сгенерировано токен,
-// то onTokenRefresh не будет вызываться. Попробуйте удалить и переустановить приложение,
-// чтобы заставить генерировать новый токен, это вызовет вызов onTokenRefresh.
-// messaging.onTokenRefresh(function () {
-//     messaging.getToken()
-//         .then(function (refreshedToken) {
-//             console.log('Token refreshed.');
-//             showToken('refresh AAAAAAAAAAAAAAA    '+ refreshedToken);
-//             alert('refresh');
-//         })
-//         .catch(function (err) {
-//             console.log('Unable to retrieve refreshed token ', err);
-//             alert('Проблема с ключем регистрации усьройства');
-//         });
-// });

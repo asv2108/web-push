@@ -8,37 +8,42 @@ while($row = $result->fetch_assoc()) {
     $token = $row['key_push'];
 }
 $conn->close();
-$title = $_POST['title'];
-$body = $_POST['body'];
-$to_url = $_POST['to-url'];
-
-// or notification or data section
-$fields = array (
-    'data'=>array(
-        'message'=> $body
-    ),
-    'to'=>$token
-);
-
-
-$fields2 = array (
-    'notification' => array (
-        "title"=> $title,
-        "body"=> $body,
-        "icon"=> "firebase-logo.png",
-        "click_action"=> $to_url
-    ),
-    'to'=>$token
-);
-
 
 if($token){
+    $title = $_POST['title'];
+    $body = $_POST['body'];
+    $to_url = $_POST['to-url'];
+    $key = $_POST['key'];
 
-// API access key from Google API's Console
-    define('API_ACCESS_KEY', 'AAAApTj_da8:APA91bG-q75ChxZEArYelPzUJ0jzjZ2e6Q0pD3wT8lrsG4i7cvliU6HB-bJDvcg8mTjMGELYOmpxYbI-yOcZEKEAwEVHqHvm2H00g09dLSnHqL6mtOvs1ZDETbmYTkAr-I4oQ9_01GaA');
+
+    // отображает service worker при параметре data
+    $fields = array (
+        'data'=>array(
+            'message'=> $body,
+            'title'=> $title,
+            'key'=> $key,
+            "action" => $to_url
+        ),
+        'to'=>$token
+    );
+
+    // отображает сама служба firebase при параметре notification
+    $fields2 = array (
+        'notification' => array (
+            "title"=> $title,
+            "body"=> $body,
+            "icon"=> "firebase-logo.png",
+            "click_action"=> $to_url
+        ),
+        'to'=>$token
+    );
+
+    // Ключ сервера
+    // TODO спрятать в конфиг
+    $api_key = 'AAAApTj_da8:APA91bG-q75ChxZEArYelPzUJ0jzjZ2e6Q0pD3wT8lrsG4i7cvliU6HB-bJDvcg8mTjMGELYOmpxYbI-yOcZEKEAwEVHqHvm2H00g09dLSnHqL6mtOvs1ZDETbmYTkAr-I4oQ9_01GaA';
 
     $headers = array(
-        'Authorization: key=' . API_ACCESS_KEY,
+        'Authorization: key=' . $api_key,
         'Content-Type: application/json'
     );
 
@@ -51,8 +56,9 @@ if($token){
     $result = curl_exec($ch);
     curl_close($ch);
 
-    echo $result;
-    
+    //echo $result;
+    header('HTTP/1.1 301');
+    header('Location: /');
     return true;
 }else return false;
 
