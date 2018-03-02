@@ -12,7 +12,6 @@ const messaging = firebase.messaging();
 
 messaging.usePublicVapidKey("BC38NtDGBrwHcy3rELmRwA4whdxaRXGaKHzAxOAfWwbhobsgBLzbVXgfkztXfFi2zX-c14IOwPsUaKiQjfdE49I");
 
-
 // кнопки подиски/отписки
 var subscribeButton = document.querySelector('#subscribe');
 var unSubscribeButton = document.querySelector('#unSubscribe');
@@ -34,40 +33,48 @@ var statusSubscribe = localStorage.getItem('subscribe');
 
 // TODO проверить чтобы времени отсрочки хватало
 // если пользователь не подписан делаем кнопку подписки активной иначе - не активной, тоже с кнопкой отписки
-setTimeout(function(){
-    if(statusSubscribe === 'on'){
+setTimeout(function () {
+    if (statusSubscribe === 'on') {
         subscribeButton.disabled = true;
         unSubscribeButton.disabled = false;
-    }else{
+    } else {
         subscribeButton.disabled = false;
         unSubscribeButton.disabled = true;
     }
-},500);
+}, 500);
 
 
 // подписаться на уведомления и получить токен
 function subscribe() {
-    messaging.getToken()
-        .then(function (currentToken) {
-            if (currentToken) {
-                // внешнее отображение
-                console.log(currentToken);
-                showToken(currentToken);
-                subscribeButton.disabled = true;
-                unSubscribeButton.disabled = false;
-                localStorage.setItem('subscribe', 'on');
-                // сохранение токена в бд
-                sendTokenToServer(currentToken,'set');
-            } else {
-                // Show permission request.
-                console.log('No Instance ID token available. Request permission to generate one.');
-            }
+    // запрашиваем разрешение на получение уведомлений
+    messaging.requestPermission()
+        .then(function () {
+            // получаем ID устройства
+            messaging.getToken()
+                .then(function (currentToken) {
+                    if (currentToken) {
+                        // внешнее отображение
+                        console.log(currentToken);
+                        showToken(currentToken);
+                        subscribeButton.disabled = true;
+                        unSubscribeButton.disabled = false;
+                        localStorage.setItem('subscribe', 'on');
+                        // сохранение токена в бд
+                        sendTokenToServer(currentToken, 'set');
+                    } else {
+                        // Show permission request.
+                        console.log('No Instance ID token available. Request permission to generate one.');
+                    }
+                })
+                .catch(function (err) {
+                    console.log(err);
+                    showToken(err);
+                    subscribeButton.disabled = false;
+                })
         })
         .catch(function (err) {
-            console.log(err);
-            showToken(err);
-            subscribeButton.disabled = false;
-        })
+            console.warn('Не удалось получить разрешение на показ уведомлений.', err);
+        });
 }
 
 function unSubscribe() {
@@ -76,11 +83,11 @@ function unSubscribe() {
             messaging.deleteToken(currentToken)
                 .then(function () {
                     localStorage.setItem('subscribe', 'out');
-                    subscribeButton.disabled = false ;
+                    subscribeButton.disabled = false;
                     unSubscribeButton.disabled = true;
                     console.log('Token deleted.');
                     // убиваем ключ в бд
-                    sendTokenToServer('-','delete');
+                    sendTokenToServer('-', 'delete');
                     //location.reload();
                 })
                 .catch(function (err) {
@@ -100,26 +107,31 @@ messaging.onMessage(function (payload) {
     var options = {
         body: payload.data.message + " " + payload.data.key,
         icon: 'firebase/firebase-logo.png',
-        action : payload.data.action
+        "click_action": payload.data.action
     };
-    var n = new Notification('add.js '+payload.data.title,options);
-    setTimeout(n.close.bind(n), 20000);
+    var n = new Notification('add.js ' + payload.data.title, options);
+
+    n.onclick =function(event) {
+        event.preventDefault(); // prevent the browser from focusing the Notification's tab
+        window.open( payload.data.action , '_blank');
+    };
+
 });
 
 
-function sendTokenToServer(currentToken,type) {
+function sendTokenToServer(currentToken, type) {
     // TODO(developer): Send the current token to your server.
     var url;
-    if(type==='set'){
+    if (type === 'set') {
         url = 'API/save.php';
-    }else{
+    } else {
         url = 'API/delete.php';
     }
     $.ajax({
-        method:'POST',
-        url:url,
-        data:{token:currentToken}
-    }).done(function(res){
+        method: 'POST',
+        url: url,
+        data: {token: currentToken}
+    }).done(function (res) {
         console.log(res);
     });
 }

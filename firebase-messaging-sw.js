@@ -18,7 +18,29 @@ messaging.setBackgroundMessageHandler(function(payload) {
     const options = {
         body: payload.data.message,
         icon: 'firebase/firebase-logo.png',
-        action : payload.data.action
+        click_action : payload.data.action
     };
     return self.registration.showNotification('sw' + title,options);
+});
+
+// обработка клика на уведомлении
+self.addEventListener('notificationclick', function(event) {
+    event.notification.close();
+    // This looks to see if the current is already open and
+    // focuses if it is
+    event.waitUntil(
+        clients.matchAll({
+            type: "window"
+        })
+            .then(function(clientList) {
+                for (var i = 0; i < clientList.length; i++) {
+                    var client = clientList[i];
+                    if (client.url == '/' && 'focus' in client)
+                        return client.focus();
+                }
+                if (clients.openWindow) {
+                    return clients.openWindow(payload.data.action);
+                }
+            })
+    );
 });

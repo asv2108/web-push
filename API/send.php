@@ -53,6 +53,7 @@ if($token){
     curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($fields));
+    //curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
     $result = curl_exec($ch);
     curl_close($ch);
 
