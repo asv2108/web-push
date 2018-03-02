@@ -74,8 +74,11 @@ curl -X POST -H "Authorization: key=AAAApTj_da8:APA91bG-q75ChxZEArYelPzUJ0jzjZ2e
     "icon": "firebase-logo.png",
     "click_action": ""
   },
+  "data":{
+    "message": "This is a Firebase Cloud Messaging Topic Message!"
+  },
   "time_to_live": 90000,
-  "to": "e_AiE7Sjaao:APA91bEKYUvS_IMmHMOTRFAFP_t37GY9FxqfJKSO_bKHFbE79mKPQTWy1JTtrmu6KvlL0qXmTVP95RohcGZ4E9tDd_LOrcbcO03IkraCikkJ4QoE-07QcZHm91qqYfUo5rSMfr1xvc2o"
+  "to": "dB_-2rtBtl0:APA91bHMRkxbyxHLMmPbVLV57svMvT9pHJCTNggzyxmFJpmlm4G29Kj_hxXwz_Ig8viS8a5uip0oDykh3Ffm_8qxuxevw8XEc_3EBYIsQGimsQKopSNcLaQwAPRiP7n-qiawFfmS0sDl"
 }' "https://fcm.googleapis.com/fcm/send"
 
 
@@ -138,3 +141,12 @@ chrome://flags/#allow-insecure-localhost  вкл
 
 
 //удалить .firebaserc firebase-debug.log
+
+// если не слать секцию notification тогда срабатывает код из сервис воркера
+curl -X POST -H "Authorization: key=AAAApTj_da8:APA91bG-q75ChxZEArYelPzUJ0jzjZ2e6Q0pD3wT8lrsG4i7cvliU6HB-bJDvcg8mTjMGELYOmpxYbI-yOcZEKEAwEVHqHvm2H00g09dLSnHqL6mtOvs1ZDETbmYTkAr-I4oQ9_01GaA" -H "Content-Type: application/json" -d '{
+  "data":{
+    "message": "This is a Firebase Cloud Messaging Topic Message!"
+  },
+  "time_to_live": 90000,
+  "to": "dB_-2rtBtl0:APA91bHMRkxbyxHLMmPbVLV57svMvT9pHJCTNggzyxmFJpmlm4G29Kj_hxXwz_Ig8viS8a5uip0oDykh3Ffm_8qxuxevw8XEc_3EBYIsQGimsQKopSNcLaQwAPRiP7n-qiawFfmS0sDl"
+}' "https://fcm.googleapis.com/fcm/send"

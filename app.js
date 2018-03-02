@@ -83,11 +83,20 @@ function unSubscribe() {
 
 // отображаем на сайте, если он открыт в текущей вкладке
 messaging.onMessage(function (payload) {
+    console.log(payload)
+
+    // var options = {
+    //     body: payload.notification.body,
+    //     icon: payload.notification.icon
+    // };
+    //var n = new Notification(payload.notification.title,options);
+
+    // если слать вместо нотификации - дату
     var options = {
-        body: payload.notification.body,
-        icon: payload.notification.icon
+        body: payload.data.message,
+        icon: 'firebase-logo.png'
     };
-    var n = new Notification(payload.notification.title,options);
+    var n = new Notification('from app.js 94',options);
     setTimeout(n.close.bind(n), 20000);
 });
 

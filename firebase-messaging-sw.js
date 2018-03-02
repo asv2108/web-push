@@ -1,3 +1,4 @@
+
 importScripts('firebase/firebase.js');
 var config = {
     apiKey: "AIzaSyBaaV8jUe_6oHafyAHLGiN2uO-Tfi7bFcg",
@@ -11,16 +12,15 @@ firebase.initializeApp(config);
 
 const messaging = firebase.messaging();
 
-//TODO пока не работает
+//отрабатывает если слать не notification а data section
 messaging.setBackgroundMessageHandler(function(payload) {
     console.log('[firebase-messaging-sw.js] Received background message ', payload);
     // Customize notification here
     const notificationTitle = 'Из сервис воркера';
     const notificationOptions = {
-        body: 'Background Message body.',
-        icon: 'Из сервис воркера'
+        body: payload.data.message,
+        icon: 'firebase-logo.png'
     };
-
     return self.registration.showNotification(notificationTitle,
         notificationOptions);
 });
