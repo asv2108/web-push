@@ -14,9 +14,9 @@ const messaging = firebase.messaging();
 
 //отрабатывает если слать не notification а data section  и при свернутой текущей вкладке
 messaging.setBackgroundMessageHandler(function(payload) {
-    const title = 'Из сервис воркера';
+    const title = payload.data.title;
     const options = {
-        body: payload.data.message,
+        body: payload.data.message + payload.data.key,
         icon: 'firebase/firebase-logo.png',
         click_action : payload.data.action
     };

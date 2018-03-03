@@ -36,10 +36,36 @@ BDOU99-h67HcA6JeFXHbSNMu7e2yNNu3RzoMj8TM4W88jITfq7ZmPvIM1Iv-4_l2LxQcYwhqby2xGpWw
 
 // если не слать секцию notification тогда срабатывает код из сервис воркера
 curl -X POST -H "Authorization: key=AAAApTj_da8:APA91bG-q75ChxZEArYelPzUJ0jzjZ2e6Q0pD3wT8lrsG4i7cvliU6HB-bJDvcg8mTjMGELYOmpxYbI-yOcZEKEAwEVHqHvm2H00g09dLSnHqL6mtOvs1ZDETbmYTkAr-I4oQ9_01GaA" -H "Content-Type: application/json" -d '{
+  "time_to_live": 3,
   "data" : {
-        "volume" : "3.21.15",
-        "contents" : "http://www.news-magazine.com/world-week/21659772"
-  },
-  "time_to_live": 90000,
-  "to": "cejsr6mJB3U:APA91bEZnonIq4HN_cGEL4RNzvugyWxXTFkqWCXSJZphHth6s6qcMS7W2hRxdzww_RdZwwJ86so8b5sX2QE-K0u0lqwIFxQoSiVefl91df3kO9wULG2oFmDYKHkfRA3yV3p8nFyFh3Wi"
+        "message" : "message terminal",
+         "title" : "title terminal",
+         "key" : "dggdfs",
+         "action" : "http://dev.mycredit.ua/ru/faq/"
+  }
+  "to": "dI4WVRUxSco:APA91bFHkloiHNMsL5KptpTooj2UyBe25A084Y8fDwpEwTtgkhFsvtHs3JmT9bhfp1rn98hljrJcNGhmaR-cFZ4btoTNy4Lnv5hg54ez0_JPKGHXV3a1rVt7gFm43SpvXadMESRqYJ56"
 }' "https://fcm.googleapis.com/fcm/send"
+
+curl -X POST -H "Authorization: key=AAAApTj_da8:APA91bG-q75ChxZEArYelPzUJ0jzjZ2e6Q0pD3wT8lrsG4i7cvliU6HB-bJDvcg8mTjMGELYOmpxYbI-yOcZEKEAwEVHqHvm2H00g09dLSnHqL6mtOvs1ZDETbmYTkAr-I4oQ9_01GaA" -H "Content-Type: application/json" -d '{
+  "time_to_live": 3,
+  "data" : {
+        "message" : "message terminal",
+         "title" : "title terminal",
+         "key" : "dggdfs",
+         "action" : "http://dev.mycredit.ua/ru/faq/"
+  }
+  "to": "dI4WVRUxSco:APA91bFHkloiHNMsL5KptpTooj2UyBe25A084Y8fDwpEwTtgkhFsvtHs3JmT9bhfp1rn98hljrJcNGhmaR-cFZ4btoTNy4Lnv5hg54ez0_JPKGHXV3a1rVt7gFm43SpvXadMESRqYJ56"
+}' "https://fcm.googleapis.com/fcm/send"
+
+
+curl -X POST -H "Authorization: key=AAAApTj_da8:APA91bG-q75ChxZEArYelPzUJ0jzjZ2e6Q0pD3wT8lrsG4i7cvliU6HB-bJDvcg8mTjMGELYOmpxYbI-yOcZEKEAwEVHqHvm2H00g09dLSnHqL6mtOvs1ZDETbmYTkAr-I4oQ9_01GaA" -H "Content-Type: application/json" -d '{
+  "time_to_live": 3,
+  "data" : {
+        "message" : "message terminal",
+         "title" : "title terminal",
+         "key" : "dggdfs",
+         "action" : "http://dev.mycredit.ua/ru/faq/"
+  }
+  "registration_ids": ["eRybdH8C-ts:APA91bFGv1Y9GkbL7rg1yFWSzLxSC6zAGHN8LU_0yQdvCEZQL3H2UcuM3oNH5eWJC7Pc-KBjxc7Gsx77_m0-8aFnXdA5fKhWvto91RlIHq7mjBK0uCvON3kGZ5fF_Bf3DzBMZtJp7NCZ"]
+}' "https://fcm.googleapis.com/fcm/send"
+

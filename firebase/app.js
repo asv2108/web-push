@@ -16,17 +16,43 @@ messaging.usePublicVapidKey("BC38NtDGBrwHcy3rELmRwA4whdxaRXGaKHzAxOAfWwbhobsgBLz
 var subscribeButton = document.querySelector('#subscribe');
 var unSubscribeButton = document.querySelector('#unSubscribe');
 
+//обратный вызов срабатывает всякий раз, когда генерируется новый токен, поэтому вызов getToken в его контексте гарантирует,
+// что вы получаете доступ к текущему доступному токену регистрации.
+messaging.onTokenRefresh(function() {
+    messaging.getToken()
+        .then(function(refreshedToken) {
+            console.log('Token refreshed.');
+            showToken(refreshedToken);
+            subscribeButton.disabled = true;
+            unSubscribeButton.disabled = false;
+            localStorage.setItem('subscribe', 'on');
+            // сохранение токена в бд
+            sendTokenToServer(refreshedToken, 'set');
+
+        })
+        .catch(function(err) {
+            console.log(err);
+            showToken(err);
+        });
+});
+
 // проверяем возможность разрешения подписки
 messaging.requestPermission().then(function () {
-    console.log('Есть возможность подписаться');
+    // TODO полученный ранее токен может быть убит пользователем через запред уведомлений в броузере
+    // нет метода checkToken  only get and delete
+    console.log('Есть возможность подписаться ');
     subscribeButton.disabled = false;
     unSubscribeButton.disabled = true;
+
 }).catch(function (err) {
     alert('You need put on web notification in your browser!');
+    subscribeButton.disabled = true;
+    unSubscribeButton.disabled = true;
     console.log(err);
     // по таймауту перегрузить страницу?
     // location.reload();
 });
+
 
 // получаем флаг подписки/не подписки
 var statusSubscribe = localStorage.getItem('subscribe');
@@ -34,6 +60,7 @@ var statusSubscribe = localStorage.getItem('subscribe');
 // TODO проверить чтобы времени отсрочки хватало
 // если пользователь не подписан делаем кнопку подписки активной иначе - не активной, тоже с кнопкой отписки
 setTimeout(function () {
+    console.log('localStorage ' + statusSubscribe);
     if (statusSubscribe === 'on') {
         subscribeButton.disabled = true;
         unSubscribeButton.disabled = false;
@@ -74,6 +101,7 @@ function subscribe() {
         })
         .catch(function (err) {
             console.warn('Не удалось получить разрешение на показ уведомлений.', err);
+            console.log('Не удалось получить разрешение на показ уведомлений.')
         });
 }
 

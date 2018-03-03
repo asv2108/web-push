@@ -9,34 +9,32 @@ while($row = $result->fetch_assoc()) {
 }
 $conn->close();
 
-if($token){
+// собираем массив адресатов
+$registration_ids = array();
+array_push($registration_ids,$token);
+
+
+if(count($registration_ids)>0){
+
+
+    // подготовка данных сообщения
     $title = $_POST['title'];
     $body = $_POST['body'];
     $to_url = $_POST['to-url'];
     $key = $_POST['key'];
 
-
-    // отображает service worker при параметре data
+    // TODO time_to_live не отрабатывает
     $fields = array (
+        'time_to_live'=> 3,
         'data'=>array(
             'message'=> $body,
             'title'=> $title,
             'key'=> $key,
             "action" => $to_url
         ),
-        'to'=>$token
+        "registration_ids"=>$registration_ids
     );
 
-    // отображает сама служба firebase при параметре notification
-    $fields2 = array (
-        'notification' => array (
-            "title"=> $title,
-            "body"=> $body,
-            "icon"=> "firebase-logo.png",
-            "click_action"=> $to_url
-        ),
-        'to'=>$token
-    );
 
     // Ключ сервера
     // TODO спрятать в конфиг
@@ -57,9 +55,12 @@ if($token){
     $result = curl_exec($ch);
     curl_close($ch);
 
-    //echo $result;
+    //запрашивая аяксом отправлять джейсоном результат
+//    echo $result;
+
     header('HTTP/1.1 301');
     header('Location: /');
     return true;
+
 }else return false;
 
