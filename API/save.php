@@ -3,14 +3,16 @@
 //$data = file_get_contents('php://input');
 $token = $_POST['token'];
 
-$conn = new mysqli("localhost", "root", "", "webpush");
-$sql = "UPDATE user_push_id SET key_push='{$token}' WHERE id=1";
-
-if ($conn->query($sql) === TRUE) {
-    echo 'users entry saved successfully';
+try {
+    $conn = new PDO("mysql:host=localhost;dbname=webpush", "root", "");
+    $stmt = $conn->prepare("INSERT INTO user_push_id (key_push) VALUES (:token)");
+    $stmt->bindParam(':token', $token);
+    $stmt->execute();
+    echo "New record created successfully";
 }
-else {
-    echo 'Error: '. $conn->error;
+catch(PDOException $e)
+{
+    echo $sql . "<br>" . $e->getMessage();
 }
+$conn = null;
 
-$conn->close();

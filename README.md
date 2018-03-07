@@ -69,3 +69,34 @@ curl -X POST -H "Authorization: key=AAAApTj_da8:APA91bG-q75ChxZEArYelPzUJ0jzjZ2e
   "registration_ids": ["eRybdH8C-ts:APA91bFGv1Y9GkbL7rg1yFWSzLxSC6zAGHN8LU_0yQdvCEZQL3H2UcuM3oNH5eWJC7Pc-KBjxc7Gsx77_m0-8aFnXdA5fKhWvto91RlIHq7mjBK0uCvON3kGZ5fF_Bf3DzBMZtJp7NCZ"]
 }' "https://fcm.googleapis.com/fcm/send"
 
+
+
+curl -X POST -H "Authorization: key=AAAAOFL8qWw:APA91bEMmMaGL-Vw6CCYbGMv4uMIFOlIp037Wo5jxrm0tIAea9DvVXJImio1s6iYsrGpaqATeqP44Z4QwjcZrVWOjAscvaj3ejb_MH-v6QH5r523b91a3H65b4ngHsiIb2NpuafxDZ76" -H "Content-Type: application/json" -d '{
+  "time_to_live": 3,
+  "data" : {
+        "message" : "New action",
+         "title" : "Title mycredit",
+         "key" : "click here",
+         "action" : "http://dev.mycredit.ua/ru/faq/"
+  }
+  "registration_ids": ["cJt4SBOqmdw:APA91bFcnI3jTrEgblQy-Jgc4rIMEt_OqHR9AUra2PSTijNmb-Byghd_OpklTA-8SYwoSXi_kFXdd59LCajPEjlUxlC-Kurw9SWX-pqIIdDKKFYilxRixtkJfxafVh5qwvl9aCpecLb7"]
+}' "https://fcm.googleapis.com/fcm/send"
+
+
+subscribe to topic
+
+var key = 'YOUR-SERVER-KEY';
+var token = 'YOUR-IID-TOKEN';
+var topic = 'YOUR-TOPIC';
+
+fetch('https://iid.googleapis.com/iid/v1/' + token + '/rel/topics/' + topic, {
+  'method': 'POST',
+  'headers': {
+    'Authorization': 'key=' + key,
+    'Content-Type': 'application/json'
+  }
+}).then(function(response) {
+  console.log(response);
+}).catch(function(error) {
+  console.error(error);
+})

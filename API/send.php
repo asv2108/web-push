@@ -1,4 +1,7 @@
 <?php
+
+// TODO will use pdo
+
 $id=1;
 $conn = new mysqli("localhost", "root", "", "webpush");
 $sql = "SELECT * FROM user_push_id WHERE id=1";
